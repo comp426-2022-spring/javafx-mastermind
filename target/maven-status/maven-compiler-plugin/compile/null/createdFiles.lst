@@ -1,0 +1,7 @@
+org\smelly\App.class
+org\smelly\View\ChickenDinnerView.class
+module-info.class
+org\smelly\Model\ModelObserver.class
+org\smelly\SystemInfo.class
+org\smelly\View\ControlsView.class
+org\smelly\View\CodeView.class
