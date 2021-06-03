@@ -45,6 +45,11 @@ public class ControllerImpl implements Controller {
   }
 
   @Override
+  public int[] getSolution() {
+    return model.getSolution();
+  }
+
+  @Override
   public void setVal(int x) {
     model.setVal(x);
   }

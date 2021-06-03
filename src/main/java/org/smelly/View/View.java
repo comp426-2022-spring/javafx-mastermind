@@ -1,6 +1,8 @@
 package org.smelly.View;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,9 +26,9 @@ public class View implements FXComponent {
 
   @Override
   public Parent render() {
-    BorderPane layout = new BorderPane();
 
-    layout.setStyle("-fx-background-color: #FFF1F8");
+    BorderPane layout = new BorderPane();
+    Insets insets = new Insets(10);
 
     if (controller.getIsSolved()) {
       ChickenDinnerView winner = new ChickenDinnerView(controller);
@@ -35,11 +37,24 @@ public class View implements FXComponent {
     }
 
     CodeView codeView = new CodeView(controller);
-    layout.setCenter(codeView.render());
+    Node codeViewNode = codeView.render();
+    layout.setCenter(codeViewNode);
 
     ControlsView controlsView = new ControlsView(controller);
-    layout.setLeft(controlsView.render());
+    Node controlViewNode = controlsView.render();
+    layout.setLeft(controlViewNode);
+    BorderPane.setMargin(controlViewNode, insets);
 
+
+    ButtonsView buttonsView = new ButtonsView(controller);
+    Node buttonsViewNode = buttonsView.render();
+    layout.setTop(buttonsViewNode);
+    BorderPane.setMargin(buttonsViewNode, insets);
+
+
+    RightActiveView rightActiveView = new RightActiveView(controller);
+    Node rightActiveViewNode = rightActiveView.render();
+    layout.setRight(rightActiveViewNode);
 
 
     return layout;

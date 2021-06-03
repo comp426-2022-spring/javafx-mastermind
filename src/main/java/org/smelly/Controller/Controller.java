@@ -17,6 +17,8 @@ public interface Controller {
 
   int getClueVal(int col, int row);
 
+  int[] getSolution();
+
   /** Setter method */
   void setVal(int x);
 

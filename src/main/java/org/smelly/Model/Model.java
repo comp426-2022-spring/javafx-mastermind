@@ -17,6 +17,8 @@ public interface Model {
 
   int getClueVal(int col, int index);
 
+  int[] getSolution();
+
   /** Setter method */
   void setVal(int x);
 

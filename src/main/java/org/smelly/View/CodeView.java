@@ -1,8 +1,6 @@
 package org.smelly.View;
 
 import javafx.scene.Parent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
@@ -60,7 +58,7 @@ public class CodeView implements FXComponent {
           stack.getChildren().add(circle);
           layout.add(stack, j, i);
         } else {
-          Circle circle = new Circle(15, Color.YELLOW);
+          Circle circle = new Circle(15, Color.VIOLET);
           stack.getChildren().add(circle);
           layout.add(stack, j, i);
         }

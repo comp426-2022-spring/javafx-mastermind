@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ModelImpl implements Model {
@@ -15,6 +16,9 @@ public class ModelImpl implements Model {
   private int activeCol;
   private int activeIndex;
   private boolean isSolved;
+
+  private int[] solCounter = new int[6];
+  private int[] codeCounter = new int[6];
 
   public ModelImpl() {
     activeCol = 0;
@@ -61,6 +65,11 @@ public class ModelImpl implements Model {
   }
 
   @Override
+  public int[] getSolution() {
+    return solution;
+  }
+
+  @Override
   public void setVal(int x) {
     if (activeIndex >= 0 && activeIndex < 4) {
       board[activeCol][activeIndex] = x;
@@ -74,10 +83,10 @@ public class ModelImpl implements Model {
     for (int i = 0; i < 4; i++) {
       solution[i] = ThreadLocalRandom.current().nextInt(1, 7);
     }
-    for (int i = 0; i < 4; i++) {
+    /*for (int i = 0; i < 4; i++) {
       System.out.print(solution[i] + " ");
     }
-    System.out.println("\n");
+    System.out.println("\n"); */
     isSolved = false;
     notifyObservers();
   }
@@ -176,55 +185,59 @@ public class ModelImpl implements Model {
 
     int[] tempSol = solution.clone();
     int y = 0;
+
+
+    this.solCounter = new int[6];
+    for (int i = 0; i < 4; i++) {
+      solCounter[tempSol[i] -1]++;
+    }
+
+    this.codeCounter = new int[6];
+    for (int i = 0; i < 4; i++) {
+      codeCounter[board[activeCol][i] -1]++;
+    }
+
     // Cycling through each val on line
     for (int i = 0; i < 4; i++) {
 
       // Checking to see if its already in right spot
       if (board[activeCol][i] == tempSol[i]) {
+        // System.out.println("Found match at index: " + i);
         clues[activeCol][y] = 2;
         y++;
+        solDecrement(board[activeCol][i]);
         tempSol[i] = 0;
+        codeCounter[board[activeCol][i] - 1]--;
       } else {
 
-        // Checking for dupe
-        boolean dupe = false;
-        if (i != 3) {
-          for (int l = i; l < 4; l++) {
-            if (board[activeCol][i] == board[activeCol][l]) {
-              dupe = true;
-              break;
-            }
-          }
+        if ((codeCounter[board[activeCol][i] -1 ] == 1) && solCounter[board[activeCol][i] - 1] >= 1) {
+          // System.out.println("First if: there is 1 of " + board[activeCol][i] + " in code and >= 1 of " + board[activeCol][i] + " in solution");
+          clues[activeCol][y] = 1;
+          y++;
+          solDecrement(board[activeCol][i]);
+          codeCounter[board[activeCol][i] - 1]--;
+        } else if ((codeCounter[board[activeCol][i] -1 ] <= solCounter[board[activeCol][i] - 1]) && codeCounter[board[activeCol][i] - 1] > 0) {
+          // System.out.println("there is less " + board[activeCol][i] + " in code than in solution and there is more than 0 of " + board[activeCol][i]);
+          clues[activeCol][y] = 1;
+          y++;
+          solDecrement(board[activeCol][i]);
+          codeCounter[board[activeCol][i] - 1]--;
+        } else {
+          // System.out.println("Else. Decrementing.");
+          codeCounter[board[activeCol][i] -1]--;
         }
-
-        // Checking if it exists elsewhere in solution
-
-        for (int o = 0; o < 4; o++) {
-          if (board[activeCol][i] == tempSol[o]) {
-            int counter = 0;
-            for (int d = 0; d < 4; d++) {
-              if (tempSol[d] == board[activeCol][i]) {
-                counter++;
-              }
-            }
-            if (!dupe || counter < 1) {
-
-              clues[activeCol][y] = 1;
-              tempSol[o] = 0;
-              y++;
-              break;
-            }
-
-          }
-
-
-        }
-
       }
+
+
     }
 
     // Rearranging the clue
     Arrays.sort(clues[activeCol], Collections.reverseOrder());
 
   }
+
+  private void solDecrement(int x) {
+    solCounter[x - 1]--;
+  }
+
 }

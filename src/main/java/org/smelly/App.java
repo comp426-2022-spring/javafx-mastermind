@@ -1,5 +1,6 @@
 package org.smelly;
 
+import java.util.Timer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -18,6 +19,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 
+
+
         // Model
 
         ModelImpl model = new ModelImpl();
@@ -31,12 +34,12 @@ public class App extends Application {
         // Scene
         Scene scene = new Scene(view.render());
 
+
         stage.setScene(scene);
 
         model.addObserver(
             (Model m) -> {
                 scene.setRoot(view.render());
-                stage.sizeToScene();
             }
         );
 

@@ -5,8 +5,10 @@ D:\comp210repos\temp0\src\main\java\org\smelly\Controller\Controller.java
 D:\comp210repos\temp0\src\main\java\module-info.java
 D:\comp210repos\temp0\src\main\java\org\smelly\Model\Model.java
 D:\comp210repos\temp0\src\main\java\org\smelly\SystemInfo.java
+D:\comp210repos\temp0\src\main\java\org\smelly\View\ButtonsView.java
 D:\comp210repos\temp0\src\main\java\org\smelly\View\View.java
 D:\comp210repos\temp0\src\main\java\org\smelly\View\FXComponent.java
+D:\comp210repos\temp0\src\main\java\org\smelly\View\RightActiveView.java
 D:\comp210repos\temp0\src\main\java\org\smelly\Model\ModelObserver.java
 D:\comp210repos\temp0\src\main\java\org\smelly\View\ChickenDinnerView.java
 D:\comp210repos\temp0\src\main\java\org\smelly\View\ControlsView.java
