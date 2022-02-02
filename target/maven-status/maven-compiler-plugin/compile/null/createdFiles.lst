@@ -1,9 +1,15 @@
 org\smelly\App.class
+org\smelly\Model\Model.class
+org\smelly\Controller\Controller.class
 org\smelly\View\ChickenDinnerView.class
 org\smelly\View\ButtonsView.class
+org\smelly\View\View.class
 org\smelly\View\RightActiveView.class
 module-info.class
+org\smelly\View\FXComponent.class
+org\smelly\Model\ModelImpl.class
 org\smelly\Model\ModelObserver.class
 org\smelly\SystemInfo.class
+org\smelly\Controller\ControllerImpl.class
 org\smelly\View\ControlsView.class
 org\smelly\View\CodeView.class
