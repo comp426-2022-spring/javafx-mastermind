@@ -34,8 +34,9 @@ javaFX 8, and as an exercise in following the Model-View-Controller design patte
 ## Running the game
 Assuming you have Maven and javaFX installed, you can run the game by executing javafx:run.
 ![Image](src/main/docs/img/mavenIn.PNG)
-If you don't have these installed, a ZIP folder called "Mastermind-Game.zip" is included in the target folder. You should be able to
-run the game through there without even having to open an IDE.
+If you don't have these installed, here is a link to a download for a ZIP file which contains the game. Extract the ZIP to a location of your choosing and run the game
+by entering the "bin" folder and running the batch file named "launch".
+https://mega.nz/file/wJdSCbJT#oMtM-0ZyorUk2xinKbVJb3kfDOe4uV7apWivcTVANTY 
         
 ## How to play
 
