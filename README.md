@@ -3,7 +3,7 @@
 Hello! Welcome to my recreation of the popular 1970 board game "Mastermind"! In this game you take 
 on the role of a code-breaker, trying to guess the randomly generated code in 10 guesses, getting feedback on
 your previous guesses. I created this game as a way to practice my skills in creating GUIs through
-javaFX 8, and as an exercise in following the Model-View-Controller design pattern. I hope you enjoy!
+javaFX 8, and as an exercise in following the Model-View-Controller design pattern. I hope you enjoy! 
 
 ## Dependencies
         <plugins>
